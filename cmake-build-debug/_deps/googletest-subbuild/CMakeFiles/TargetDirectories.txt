@@ -1,0 +1,3 @@
+/media/zix/WinBuntu/JetBrains_IDEs/clion_projects/OOP/cmake-build-debug/_deps/googletest-subbuild/CMakeFiles/googletest-populate.dir
+/media/zix/WinBuntu/JetBrains_IDEs/clion_projects/OOP/cmake-build-debug/_deps/googletest-subbuild/CMakeFiles/edit_cache.dir
+/media/zix/WinBuntu/JetBrains_IDEs/clion_projects/OOP/cmake-build-debug/_deps/googletest-subbuild/CMakeFiles/rebuild_cache.dir

@@ -12,6 +12,6 @@ int count_char_repeats(const std::string&custom_string, const char letter) {
 }
 
 int from_bin_to_int(const std::string&binary_string) {
-    const auto answer = std::pow(2, count_char_repeats(binary_string, '1')) - 1;
+    const int answer = static_cast<int>(std::pow(2, count_char_repeats(binary_string, '1'))) - 1;
     return answer;
 }

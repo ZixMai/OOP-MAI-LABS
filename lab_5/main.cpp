@@ -1,5 +1,3 @@
-#include <iostream>
-#include "./src/LinkedList.h"
 #include "./src/CustomMemoryResource.h"
 
 int main() {

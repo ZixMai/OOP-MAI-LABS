@@ -2,7 +2,7 @@
 #include <utility>
 #include "druid.h"
 
-Druid::Druid(int x, int y, std::string name, bool is_alive) : NPC(DruidType, x, y, std::move(name), is_alive) {}
+Druid::Druid(int x, int y, std::string name, bool is_alive, size_t range) : NPC(DruidType, x, y, std::move(name), is_alive, range) {}
 Druid::Druid(std::istream &is) : NPC(DruidType, is) {}
 
 void Druid::visit(std::shared_ptr<Orc> npc) {  }
@@ -11,6 +11,7 @@ void Druid::visit(std::shared_ptr<SlaveTrader> npc) {  }
 
 void Druid::accept(const std::shared_ptr<NPC> &visitor) {
     auto ptrToThis = std::static_pointer_cast<Druid>(shared_from_this());
+    if (!visitor->get_is_alive()) { return; }
     visitor->visit(ptrToThis);
 }
 

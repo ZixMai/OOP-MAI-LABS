@@ -38,20 +38,20 @@ std::shared_ptr<NPC> factory(std::istream &is)
     return result;
 }
 
-std::shared_ptr<NPC> factory(NpcType type, int x, int y, std::string name, bool is_alive = true)
+std::shared_ptr<NPC> factory(NpcType type, int x, int y, std::string name, size_t range, bool is_alive = true)
 {
     std::cout << "Type:" << (int)type << std::endl;
     std::shared_ptr<NPC> result;
     switch (type)
     {
         case DruidType:
-            result = std::make_shared<Druid>(x, y, name, is_alive);
+            result = std::make_shared<Druid>(x, y, name, is_alive, range);
             break;
         case OrcType:
-            result = std::make_shared<Orc>(x, y, name, is_alive);
+            result = std::make_shared<Orc>(x, y, name, is_alive, range);
             break;
         case SlaveTraderType:
-            result = std::make_shared<SlaveTrader>(x, y, name, is_alive);
+            result = std::make_shared<SlaveTrader>(x, y, name, is_alive, range);
             break;
         default:
             break;

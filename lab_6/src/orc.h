@@ -4,9 +4,10 @@
 #include "orc.h"
 #include "slave_trader.h"
 
-struct Orc : public NPC
+class Orc : public NPC
 {
-    Orc(int x, int y, std::string name, bool is_alive);
+    public:
+    Orc(int x, int y, std::string name, bool is_alive, size_t range);
     explicit Orc(std::istream &is);
     void print() override;
 

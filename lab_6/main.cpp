@@ -35,7 +35,8 @@ int main()
         array.insert(factory(NpcType(std::rand() % 3 + 1),
                              std::rand() % 100,
                              std::rand() % 100,
-                             std::to_string(i)));
+                             std::to_string(i),
+                             std::rand() % 100));
     std::cout << "Saving ..." << std::endl;
 
     Backuper::save(array, "npc.txt");

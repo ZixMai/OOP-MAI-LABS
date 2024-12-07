@@ -1,7 +1,7 @@
 #include <iostream>
 #include "orc.h"
 
-Orc::Orc(int x, int y, std::string name, bool is_alive) : NPC(OrcType, x, y, std::move(name), is_alive) {}
+Orc::Orc(int x, int y, std::string name, bool is_alive, size_t range) : NPC(OrcType, x, y, std::move(name), is_alive, range) {}
 Orc::Orc(std::istream &is) : NPC(OrcType, is) {}
 
 void Orc::print()
@@ -15,6 +15,7 @@ void Orc::visit(std::shared_ptr<SlaveTrader> npc) { kill(npc); }
 
 void Orc::accept(const std::shared_ptr<NPC> &visitor) {
     auto ptrToThis = std::static_pointer_cast<Orc>(shared_from_this());
+    if (!visitor->get_is_alive()) { return; }
     visitor->visit(ptrToThis);
 }
 

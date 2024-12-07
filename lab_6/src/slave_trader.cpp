@@ -2,7 +2,7 @@
 #include <utility>
 #include "slave_trader.h"
 
-SlaveTrader::SlaveTrader(int x, int y, std::string name, bool is_alive) : NPC(SlaveTraderType, x, y, std::move(name), is_alive) {}
+SlaveTrader::SlaveTrader(int x, int y, std::string name, bool is_alive, size_t range) : NPC(SlaveTraderType, x, y, std::move(name), is_alive, range) {}
 SlaveTrader::SlaveTrader(std::istream &is) : NPC(SlaveTraderType, is) {}
 
 void SlaveTrader::print()
@@ -22,6 +22,7 @@ void SlaveTrader::visit(std::shared_ptr<Orc> npc) {  }
 
 void SlaveTrader::accept(const std::shared_ptr<NPC> &visitor) {
     auto ptrToThis = std::static_pointer_cast<SlaveTrader>(shared_from_this());
+    if (!visitor->get_is_alive()) { return; }
     visitor->visit(ptrToThis);
 }
 

@@ -59,7 +59,8 @@ public:
                x == rhs.x &&
                y == rhs.y &&
                name == rhs.name &&
-               is_alive == rhs.is_alive;
+               is_alive == rhs.is_alive &&
+               range == rhs.range;
     }
     friend std::ostream &operator<<(std::ostream &os, NPC &npc);
 };

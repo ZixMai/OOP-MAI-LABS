@@ -35,6 +35,7 @@ TEST(BackupLoaderTests, ShouldDumpAndLoadData) {
                     1,
                     1,
                     "name",
+                    1,
                     true
                     ));
     array.insert(
@@ -42,6 +43,7 @@ TEST(BackupLoaderTests, ShouldDumpAndLoadData) {
                     2,
                     3,
                     "name1",
+                    1,
                     true
     ));
     array.insert(
@@ -49,6 +51,7 @@ TEST(BackupLoaderTests, ShouldDumpAndLoadData) {
                     3,
                     3,
                     "name2",
+                    1,
                     true
     ));
 
@@ -102,8 +105,8 @@ TEST(VisitorTests, ShouldVisitCorrectly) {
     std::ostringstream oss;
     std::shared_ptr<Logger::ILogger> logger = std::make_shared<Logger::ConsoleLogger>(oss, "name");
 
-    auto st = factory(SlaveTraderType,3,3,"name2",true);
-    auto druid = factory(DruidType,3,3,"name1",true);
+    auto st = factory(SlaveTraderType,3,3,"name2", 1, true);
+    auto druid = factory(DruidType,3,3,"name1", 1, true);
 
     st->loggers.push_back(logger);
     druid->loggers.push_back(logger);
@@ -117,8 +120,8 @@ TEST(VisitorTests, ShouldNotKillIfNotAlive) {
     std::ostringstream oss;
     std::shared_ptr<Logger::ILogger> logger = std::make_shared<Logger::ConsoleLogger>(oss, "name");
 
-    auto st = factory(SlaveTraderType,3,3,"name2",true);
-    auto druid = factory(DruidType,3,3,"name1",false);
+    auto st = factory(SlaveTraderType,3,3,"name2", 1, true);
+    auto druid = factory(DruidType,3,3,"name1", 1, false);
 
     st->loggers.push_back(logger);
     druid->loggers.push_back(logger);

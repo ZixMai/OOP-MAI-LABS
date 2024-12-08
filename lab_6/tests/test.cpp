@@ -1,8 +1,5 @@
 #include <gtest/gtest.h>
 #include "../src/npc.h"
-#include "../src/orc.h"
-#include "../src/druid.h"
-#include "../src/slave_trader.h"
 #include <memory>
 #include <vector>
 #include <filesystem>
@@ -108,8 +105,8 @@ TEST(VisitorTests, ShouldVisitCorrectly) {
     auto st = factory(SlaveTraderType,3,3,"name2", 1, true);
     auto druid = factory(DruidType,3,3,"name1", 1, true);
 
-    st->loggers.push_back(logger);
-    druid->loggers.push_back(logger);
+    st->get_loggers().push_back(logger);
+    druid->get_loggers().push_back(logger);
 
     st->accept(druid);
     druid->accept(st);
@@ -123,8 +120,8 @@ TEST(VisitorTests, ShouldNotKillIfNotAlive) {
     auto st = factory(SlaveTraderType,3,3,"name2", 1, true);
     auto druid = factory(DruidType,3,3,"name1", 1, false);
 
-    st->loggers.push_back(logger);
-    druid->loggers.push_back(logger);
+    st->get_loggers().push_back(logger);
+    druid->get_loggers().push_back(logger);
 
     st->accept(druid);
     druid->accept(st);

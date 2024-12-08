@@ -41,9 +41,11 @@ public:
 
     virtual void accept(const std::shared_ptr<NPC>& npc) = 0;
 
+    std::vector<std::shared_ptr<Logger::ILogger>> get_loggers() const { return loggers; }
     std::string get_name() const;
     bool get_is_alive() const;
     size_t get_range() const;
+
     virtual std::string get_type() const = 0;
 
     virtual void visit(std::shared_ptr<SlaveTrader> npc) = 0;

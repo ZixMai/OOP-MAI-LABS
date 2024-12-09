@@ -105,8 +105,8 @@ TEST(VisitorTests, ShouldVisitCorrectly) {
     auto st = factory(SlaveTraderType,3,3,"name2", 1, true);
     auto druid = factory(DruidType,3,3,"name1", 1, true);
 
-    st->get_loggers().push_back(logger);
-    druid->get_loggers().push_back(logger);
+    st->subscribe(logger);
+    druid->subscribe(logger);
 
     st->accept(druid);
     druid->accept(st);
@@ -120,8 +120,8 @@ TEST(VisitorTests, ShouldNotKillIfNotAlive) {
     auto st = factory(SlaveTraderType,3,3,"name2", 1, true);
     auto druid = factory(DruidType,3,3,"name1", 1, false);
 
-    st->get_loggers().push_back(logger);
-    druid->get_loggers().push_back(logger);
+    st->subscribe(logger);
+    druid->subscribe(logger);
 
     st->accept(druid);
     druid->accept(st);

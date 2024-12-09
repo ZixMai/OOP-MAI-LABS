@@ -16,7 +16,7 @@ NPC::NPC(NpcType t, std::istream &is) : type(t)
 }
 
 void NPC::kill(const std::shared_ptr<NPC>& victim) {
-    if (!is_close(victim, victim->get_range())) return;
+    if (!is_close(victim, victim->get_range()) || !victim->get_is_alive() || !get_is_alive()) return;
     if (loggers.empty()) return;
     for (auto& logger : loggers)
         logger->log(std::format("{} of type {} got killed by {} of type {}", victim->get_name(), victim->get_type(), name, get_type()));

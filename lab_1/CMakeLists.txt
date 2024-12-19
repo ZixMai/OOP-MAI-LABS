@@ -5,8 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_library(${SubProjectName}_lib src/bin_to_int.cpp)
-add_executable(${SubProjectName}_exe main.cpp
-)
+add_executable(${SubProjectName}_exe main.cpp)
 
 target_link_libraries(${SubProjectName}_exe PRIVATE ${SubProjectName}_lib)
 
